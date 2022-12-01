@@ -2,13 +2,13 @@ package common
 
 fun resourceAsLines(fileName: String): Sequence<String> {
     return object {}.javaClass
-        .getResourceAsStream(fileName)!!
+        .getResourceAsStream("/$fileName")!!
         .bufferedReader()
         .lineSequence()
 }
 
 fun resourceAsString(fileName: String) : String {
     return object {}.javaClass
-        .getResource(fileName)
-        ?.readText()!!
+        .getResource("/$fileName")!!
+        .readText()
 }
