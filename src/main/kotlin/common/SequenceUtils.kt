@@ -1,7 +1,7 @@
 package common
 
 fun Sequence<String>.splitByEmptyLines(): Sequence<List<String>> {
-    return SplitSeq(this, String::isEmpty)
+    return splitBy { it.isEmpty() }
 }
 
 fun <T> Sequence<T>.splitBy(predicate: (T) -> Boolean): Sequence<List<T>> {
