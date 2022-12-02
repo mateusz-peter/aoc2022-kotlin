@@ -1,47 +1,5 @@
 package day2
 
-sealed class Shape(val shapeScore: Int)
-object Rock : Shape(1)
-object Paper : Shape(2)
-object Scissors : Shape(3)
-
-val Shape.loseTo: Shape
-    get() = when (this) {
-        is Rock -> Paper
-        is Paper -> Scissors
-        is Scissors -> Rock
-    }
-
-val Shape.winAgainst: Shape
-    get() = when (this) {
-        is Rock -> Scissors
-        is Paper -> Rock
-        is Scissors -> Paper
-    }
-
-fun Char.toShape(): Shape {
-    return when (this) {
-        'A', 'X' -> Rock
-        'B', 'Y' -> Paper
-        'C', 'Z' -> Scissors
-        else -> throw Exception()
-    }
-}
-
-sealed class Result(val score: Int)
-object Win : Result(6)
-object Draw : Result(3)
-object Lose : Result(0)
-
-fun Char.toResult(): Result {
-    return when (this) {
-        'X' -> Lose
-        'Y' -> Draw
-        'Z' -> Win
-        else -> throw Exception()
-    }
-}
-
 fun scoreA(opponents: Shape, mine: Shape): Int {
     val vsScore = when (mine) {
         opponents.loseTo -> 6
