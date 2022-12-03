@@ -1,13 +1,13 @@
 package day2
 
 fun scoreA(opponents: Shape, mine: Shape): Int {
-    val vsScore = when (mine) {
-        opponents.loseTo -> 6
-        opponents -> 3
-        else -> 0
+    val result = when (mine) {
+        opponents.loseTo -> Win
+        opponents -> Draw
+        else -> Lose
     }
 
-    return mine.shapeScore + vsScore
+    return mine.shapeScore + result.score
 }
 
 fun scoreB(opponents: Shape, result: Result): Int {

@@ -1,11 +1,11 @@
 package day3
 
-
 fun Char.itemValue(): Int = when (this) {
     in 'a'..'z' -> this - 'a' + 1
     in 'A'..'Z' -> this - 'A' + 27
     else -> error("Char out of range: $this")
 }
+
 fun day3A(lines: Sequence<String>): Int {
     return lines.filter { it.isNotBlank() }
         .map { it.trim() }
